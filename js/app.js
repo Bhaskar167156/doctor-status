@@ -6,12 +6,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const STATUS_META = {
-  available: { label: "Available at home", color: "#23845b", pulse: true },
-  busy: { label: "Busy — seeing a patient", color: "#c47a18", pulse: false },
-  home_visit: { label: "On another home visit", color: "#3977b8", pulse: false },
-  clinic: { label: "At the clinic", color: "#765bb0", pulse: false },
-  away: { label: "Not in the village", color: "#7c828a", pulse: false },
-  leave: { label: "On leave", color: "#4a4f54", pulse: false }
+  available: { label: "ఇంటి వద్ద అందుబాటులో ఉన్నారు", color: "#23845b", pulse: true },
+  busy: { label: "బిజీ — రోగిని చూస్తున్నారు", color: "#c47a18", pulse: false },
+  home_visit: { label: "వేరే ఇంటి సందర్శనలో ఉన్నారు", color: "#3977b8", pulse: false },
+  clinic: { label: "క్లినిక్‌లో ఉన్నారు", color: "#765bb0", pulse: false },
+  away: { label: "ఊరిలో లేరు", color: "#7c828a", pulse: false },
+  leave: { label: "సెలవులో ఉన్నారు", color: "#4a4f54", pulse: false }
 };
 
 document.getElementById("doctorName").textContent = doctorInfo.name;
