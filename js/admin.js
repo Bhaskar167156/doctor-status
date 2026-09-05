@@ -34,21 +34,20 @@ const statusSelect = document.getElementById("statusSelect");
 
 function toInternalEmail(username) {
   const clean = username.trim().toLowerCase();
-  // If someone still types a full email, respect it as-is.
   return clean.includes("@") ? clean : `${clean}@${USERNAME_DOMAIN}`;
 }
 
 loginBtn.addEventListener("click", async () => {
   loginError.textContent = "";
   loginBtn.disabled = true;
-  loginBtn.textContent = "సైన్ ఇన్ అవుతోంది…";
+  loginBtn.textContent = "Signing in…";
   try {
     await signInWithEmailAndPassword(auth, toInternalEmail(usernameInput.value), passwordInput.value);
   } catch (err) {
-    loginError.textContent = "సైన్ ఇన్ కాలేకపోయాము. వినియోగదారు పేరు మరియు పాస్‌వర్డ్ సరిచూడండి.";
+    loginError.textContent = "Unable to sign in. Please check your username and password.";
   } finally {
     loginBtn.disabled = false;
-    loginBtn.textContent = "సైన్ ఇన్";
+    loginBtn.textContent = "Sign in";
   }
 });
 
@@ -58,23 +57,23 @@ saveBtn.addEventListener("click", async () => {
   saveError.textContent = "";
   const selectedStatus = statusSelect.value;
   if (!selectedStatus) {
-    saveError.textContent = "ముందు ఒక స్థితిని ఎంచుకోండి.";
+    saveError.textContent = "Please select a status first.";
     return;
   }
   saveBtn.disabled = true;
-  saveBtn.textContent = "సేవ్ అవుతోంది…";
+  saveBtn.textContent = "Saving…";
   try {
     await setDoc(ref, {
       status: selectedStatus,
       note: noteInput.value.trim(),
       updatedAt: serverTimestamp()
     });
-    lastSaved.textContent = "ఇప్పుడే సేవ్ చేయబడింది.";
+    lastSaved.textContent = "Saved just now.";
   } catch (err) {
-    saveError.textContent = "సేవ్ చేయలేకపోయాము. మీ ఇంటర్నెట్ కనెక్షన్ చూసి మళ్ళీ ప్రయత్నించండి.";
+    saveError.textContent = "Unable to save. Please check your internet connection and try again.";
   } finally {
     saveBtn.disabled = false;
-    saveBtn.textContent = "స్థితిని సేవ్ చేయండి";
+    saveBtn.textContent = "Save status";
   }
 });
 
