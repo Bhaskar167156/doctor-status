@@ -11,7 +11,8 @@ const STATUS_META = {
   home_visit: { label: "వేరే ఇంటి సందర్శనలో ఉన్నారు", color: "#3977b8", pulse: false },
   clinic: { label: "క్లినిక్‌లో ఉన్నారు", color: "#765bb0", pulse: false },
   away: { label: "ఊరిలో లేరు", color: "#7c828a", pulse: false },
-  leave: { label: "సెలవులో ఉన్నారు", color: "#4a4f54", pulse: false }
+  leave: { label: "సెలవులో ఉన్నారు", color: "#4a4f54", pulse: false },
+  driving: { label: "డ్రైవింగ్‌లో ఉన్నారు", color: "#d45b2c", pulse: false }
 };
 
 document.getElementById("doctorName").textContent = doctorInfo.name;
