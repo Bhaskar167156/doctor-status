@@ -14,12 +14,12 @@ export const firebaseConfig = {
   appId: "1:702653399520:web:048f4eebb191f64554ab85"
 };
 
-// 2. Doctor / clinic details shown on the public page (in Telugu).
+// 2. Doctor / clinic details shown on the public page.
 export const doctorInfo = {
-  name: "డా. మావుదూరి రామబాబు",
-  specialty: "జనరల్ ఫిజీషియన్",
+  name: "Dr. Mavuduri Rambabu",
+  specialty: "General Physician",
   // Shown at the bottom of the public status card. Keep it short.
-  footerHtml: "అపాయింట్‌మెంట్ ద్వారా ఇంటి సందర్శనలు · కాల్ చేయండి +91 00000 00000"
+  footerHtml: "Home visits by appointment · Please call for details"
 };
 
 // 3. Firestore location where the live status is stored.
