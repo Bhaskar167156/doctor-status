@@ -16,8 +16,8 @@ export const firebaseConfig = {
 
 // 2. Doctor / clinic details shown on the public page.
 export const doctorInfo = {
-  name: "Dr. Mavuduri Rambabu",
-  specialty: "General Physician",
+  name: "Mavuduri Rambabu",
+  specialty: "",
   // Shown at the bottom of the public status card. Keep it short.
   footerHtml: "Home visits by appointment · Please call for details"
 };
