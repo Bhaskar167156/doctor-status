@@ -6,12 +6,12 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const STATUS_META = {
-  available: { label: "ఇంటి వద్ద అందుబాటులో ఉన్నారు", color: "#2f7d4f", pulse: true },
-  busy: { label: "బిజీ — రోగిని చూస్తున్నారు", color: "#b9761f", pulse: false },
-  home_visit: { label: "వేరే ఇంటి సందర్శనలో ఉన్నారు", color: "#3b6ea5", pulse: false },
-  clinic: { label: "క్లినిక్‌లో ఉన్నారు", color: "#6b5b95", pulse: false },
-  away: { label: "ఊరిలో లేరు", color: "#7c828a", pulse: false },
-  leave: { label: "సెలవులో ఉన్నారు", color: "#4a4f54", pulse: false }
+  available: { label: "Available at home", color: "#23845b", pulse: true },
+  busy: { label: "Busy — seeing a patient", color: "#c47a18", pulse: false },
+  home_visit: { label: "On another home visit", color: "#3977b8", pulse: false },
+  clinic: { label: "At the clinic", color: "#765bb0", pulse: false },
+  away: { label: "Not in the village", color: "#7c828a", pulse: false },
+  leave: { label: "On leave", color: "#4a4f54", pulse: false }
 };
 
 document.getElementById("doctorName").textContent = doctorInfo.name;
@@ -25,13 +25,13 @@ const noteEl = document.getElementById("statusNote");
 
 function timeAgo(date) {
   const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
-  if (seconds < 60) return "ఇప్పుడే";
+  if (seconds < 60) return "Just now";
   const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes} నిమిషాల క్రితం`;
+  if (minutes < 60) return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} గంటల క్రితం`;
+  if (hours < 24) return `${hours} hour${hours === 1 ? "" : "s"} ago`;
   const days = Math.floor(hours / 24);
-  return `${days} రోజుల క్రితం`;
+  return `${days} day${days === 1 ? "" : "s"} ago`;
 }
 
 function render(data) {
@@ -43,8 +43,7 @@ function render(data) {
 
   if (data.updatedAt && data.updatedAt.toDate) {
     const d = data.updatedAt.toDate();
-    updatedEl.textContent = `${timeAgo(d)} అప్‌డేట్ చేయబడింది`;
-    // Keep the relative time fresh without a full re-render.
+    updatedEl.textContent = `Updated ${timeAgo(d)}`;
     updatedEl.dataset.ts = d.getTime();
   } else {
     updatedEl.textContent = "";
@@ -59,21 +58,20 @@ onSnapshot(
     if (snap.exists()) {
       render(snap.data());
     } else {
-      labelEl.textContent = "స్థితి ఇంకా సెటప్ చేయలేదు";
+      labelEl.textContent = "Status not set up yet";
       dotEl.style.background = "#7c828a";
       updatedEl.textContent = "";
     }
   },
   (err) => {
     console.error(err);
-    labelEl.textContent = "స్థితిని లోడ్ చేయలేకపోయాము";
+    labelEl.textContent = "Unable to load status";
     dotEl.style.background = "#7c828a";
-    updatedEl.textContent = "మీ ఇంటర్నెట్ కనెక్షన్ చూసి మళ్ళీ ప్రయత్నించండి";
+    updatedEl.textContent = "Please check your internet connection and try again.";
   }
 );
 
-// Refresh the "x mins ago" text every 30s without waiting for a new snapshot.
 setInterval(() => {
   const ts = Number(updatedEl.dataset.ts);
-  if (ts) updatedEl.textContent = `${timeAgo(new Date(ts))} అప్‌డేట్ చేయబడింది`;
+  if (ts) updatedEl.textContent = `Updated ${timeAgo(new Date(ts))}`;
 }, 30000);
