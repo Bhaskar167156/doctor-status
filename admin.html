@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>స్థితిని నవీకరించండి — సిబ్బంది</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="admin-wrap">
+
+    <!-- LOGIN VIEW -->
+    <div class="admin-card" id="loginCard">
+      <h1 class="admin-title">సిబ్బంది సైన్ ఇన్</h1>
+      <p class="admin-sub">డాక్టర్ అందుబాటును నవీకరించడానికి సైన్ ఇన్ చేయండి.</p>
+
+      <label class="field-label" for="username">వినియోగదారు పేరు</label>
+      <input type="text" id="username" autocomplete="username" autocapitalize="none" />
+
+      <label class="field-label" for="password">పాస్‌వర్డ్</label>
+      <input type="password" id="password" autocomplete="current-password" />
+
+      <p class="error-text" id="loginError"></p>
+
+      <button class="btn-primary" id="loginBtn">సైన్ ఇన్</button>
+    </div>
+
+    <!-- UPDATE VIEW -->
+    <div class="admin-card hidden" id="updateCard">
+      <h1 class="admin-title">అందుబాటు స్థితిని నవీకరించండి</h1>
+      <p class="admin-sub">డాక్టర్ ప్రస్తుత స్థితిని ఎంచుకోండి.</p>
+
+      <label class="field-label" for="statusSelect">ప్రస్తుత స్థితి</label>
+      <select id="statusSelect">
+        <option value="" disabled selected>స్థితిని ఎంచుకోండి</option>
+        <option value="available">🟢 ఇంటి వద్ద అందుబాటులో ఉన్నారు</option>
+        <option value="busy">🟠 బిజీ — రోగిని చూస్తున్నారు</option>
+        <option value="home_visit">🔵 వేరే ఇంటి సందర్శనలో ఉన్నారు</option>
+        <option value="clinic">🟣 క్లినిక్‌లో ఉన్నారు</option>
+        <option value="away">⚪ ఊరిలో లేరు</option>
+        <option value="leave">⚫ సెలవులో ఉన్నారు</option>
+      </select>
+
+      <label class="field-label" for="note">రోగుల కోసం సూచన (ఐచ్ఛికం)</label>
+      <textarea id="note" rows="2" placeholder="ఉదా. సాయంత్రం 6 గంటలకు తిరిగి వస్తారు"></textarea>
+
+      <p class="error-text" id="saveError"></p>
+
+      <button class="btn-primary" id="saveBtn">స్థితిని సేవ్ చేయండి</button>
+
+      <p class="admin-meta" id="lastSaved">&nbsp;</p>
+      <button class="logout-link" id="logoutBtn">సైన్ అవుట్</button>
+    </div>
+
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
