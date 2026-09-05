@@ -1,59 +1,55 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>స్థితిని నవీకరించండి — సిబ్బంది</title>
+<title>Update Doctor Status — Staff</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <div class="admin-wrap">
-
-    <!-- LOGIN VIEW -->
+  <main class="admin-wrap">
     <div class="admin-card" id="loginCard">
-      <h1 class="admin-title">సిబ్బంది సైన్ ఇన్</h1>
-      <p class="admin-sub">డాక్టర్ అందుబాటును నవీకరించడానికి సైన్ ఇన్ చేయండి.</p>
+      <div class="card-badge">STAFF PORTAL</div>
+      <h1 class="admin-title">Staff sign in</h1>
+      <p class="admin-sub">Sign in to update the doctor's current availability.</p>
 
-      <label class="field-label" for="username">వినియోగదారు పేరు</label>
+      <label class="field-label" for="username">Username</label>
       <input type="text" id="username" autocomplete="username" autocapitalize="none" />
 
-      <label class="field-label" for="password">పాస్‌వర్డ్</label>
+      <label class="field-label" for="password">Password</label>
       <input type="password" id="password" autocomplete="current-password" />
 
       <p class="error-text" id="loginError"></p>
-
-      <button class="btn-primary" id="loginBtn">సైన్ ఇన్</button>
+      <button class="btn-primary" id="loginBtn">Sign in</button>
     </div>
 
-    <!-- UPDATE VIEW -->
     <div class="admin-card hidden" id="updateCard">
-      <h1 class="admin-title">అందుబాటు స్థితిని నవీకరించండి</h1>
-      <p class="admin-sub">డాక్టర్ ప్రస్తుత స్థితిని ఎంచుకోండి.</p>
+      <div class="card-badge">LIVE STATUS</div>
+      <h1 class="admin-title">Update availability</h1>
+      <p class="admin-sub">Choose the doctor's current status.</p>
 
-      <label class="field-label" for="statusSelect">ప్రస్తుత స్థితి</label>
+      <label class="field-label" for="statusSelect">Current status</label>
       <select id="statusSelect">
-        <option value="" disabled selected>స్థితిని ఎంచుకోండి</option>
-        <option value="available">🟢 ఇంటి వద్ద అందుబాటులో ఉన్నారు</option>
-        <option value="busy">🟠 బిజీ — రోగిని చూస్తున్నారు</option>
-        <option value="home_visit">🔵 వేరే ఇంటి సందర్శనలో ఉన్నారు</option>
-        <option value="clinic">🟣 క్లినిక్‌లో ఉన్నారు</option>
-        <option value="away">⚪ ఊరిలో లేరు</option>
-        <option value="leave">⚫ సెలవులో ఉన్నారు</option>
+        <option value="" disabled selected>Select a status</option>
+        <option value="available">🟢 Available at home</option>
+        <option value="busy">🟠 Busy — seeing a patient</option>
+        <option value="home_visit">🔵 On another home visit</option>
+        <option value="clinic">🟣 At the clinic</option>
+        <option value="away">⚪ Not in the village</option>
+        <option value="leave">⚫ On leave</option>
       </select>
 
-      <label class="field-label" for="note">రోగుల కోసం సూచన (ఐచ్ఛికం)</label>
-      <textarea id="note" rows="2" placeholder="ఉదా. సాయంత్రం 6 గంటలకు తిరిగి వస్తారు"></textarea>
+      <label class="field-label" for="note">Note for patients (optional)</label>
+      <textarea id="note" rows="2" placeholder="e.g. Returning at 6:00 PM"></textarea>
 
       <p class="error-text" id="saveError"></p>
-
-      <button class="btn-primary" id="saveBtn">స్థితిని సేవ్ చేయండి</button>
+      <button class="btn-primary" id="saveBtn">Save status</button>
 
       <p class="admin-meta" id="lastSaved">&nbsp;</p>
-      <button class="logout-link" id="logoutBtn">సైన్ అవుట్</button>
+      <button class="logout-link" id="logoutBtn">Sign out</button>
     </div>
-
-  </div>
+  </main>
 
   <script type="module" src="js/admin.js"></script>
 </body>
